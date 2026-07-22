@@ -10,11 +10,11 @@
         body { background-color: var(--primary-light) !important; color: #1a2a2a; font-family: -apple-system, sans-serif; padding: 16px; margin: 0; min-height: 100vh; }
         .menu-card { background-color: #fff; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 12px var(--card-shadow); border: 1px solid rgba(38,166,154,0.08); display: flex; align-items: center; gap: 14px; cursor: pointer; transition: transform 0.1s; }
         .menu-card:active { transform: scale(0.97); }
-        .menu-card .icon { font-size: 28px; }
+        .menu-card .icon { font-size: 28px; flex-shrink: 0; }
         .menu-card .text { flex: 1; }
         .menu-card .text h3 { margin: 0 0 4px; color: var(--primary-dark); font-weight: 600; font-size: 17px; }
-        .menu-card .text p { margin: 0; color: #4d6b6b; font-size: 14px; }
-        .menu-card .arrow { font-size: 22px; color: var(--primary-teal); }
+        .menu-card .text p { margin: 0; color: #4d6b6b; font-size: 14px; line-height: 1.4; }
+        .menu-card .arrow { font-size: 22px; color: var(--primary-teal); flex-shrink: 0; }
         h1 { color: var(--primary-dark); font-size: 24px; font-weight: 700; margin-top: 8px; margin-bottom: 4px; }
         .subhead { color: #4d6b6b; font-size: 15px; margin-top: 0; margin-bottom: 20px; }
         .back-button { display: inline-block; margin-top: 24px; padding: 14px 20px; background-color: var(--primary-teal); color: #fff; border: none; border-radius: 30px; font-size: 17px; font-weight: 500; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box; box-shadow: 0 4px 8px rgba(38,166,154,0.25); transition: 0.2s; }
@@ -34,28 +34,151 @@
     <h1>📚 Инструкции по АРМ</h1>
     <p class="subhead">Выберите нужный раздел:</p>
 
-    <a href="arm-vrach.html" style="text-decoration: none; color: inherit;">
+    <!-- Категория: Для Врачей и медицинских сестёр (Амбулатория ЦП) -->
+    <a href="doctorsAmbCP.html" style="text-decoration: none; color: inherit;">
         <div class="menu-card">
             <span class="icon">🩺</span>
             <div class="text">
-                <h3>АРМ Врач поликлиники</h3>
-                <p>Работа с приёмом, назначениями, закрытие талонов</p>
+                <h3>Для Врачей и медицинских сестёр (Амбулатория ЦП)</h3>
+                <p>Инструкции для врачей и медицинских сестёр</p>
             </div>
             <span class="arrow">→</span>
         </div>
     </a>
 
-    <a href="arm-amb.html" style="text-decoration: none; color: inherit;">
+    <!-- Категория: Для Врачей (Стационар КБ122) -->
+    <a href="doctorsStacCP.html" style="text-decoration: none; color: inherit;">
         <div class="menu-card">
-            <span class="icon">📋</span>
+            <span class="icon">🩺</span>
             <div class="text">
-                <h3>АРМ Амбулаторная история</h3>
-                <p>Поиск пациентов, визиты, выписки</p>
+                <h3>Для Врачей (Стационар КБ122)</h3>
+                <p>Инструкции для врачей стационара КБ122</p>
             </div>
             <span class="arrow">→</span>
         </div>
     </a>
 
+    <!-- Категория: Для медицинских сестёр (Стационар КБ122) -->
+    <a href="nurseStacCP.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩺</span>
+            <div class="text">
+                <h3>Для медицинских сестёр (Стационар КБ122)</h3>
+                <p>Инструкции для медицинских сестёр стационара КБ122</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Для Врачей (Валдай амбулатория) -->
+    <a href="Doctors_valday.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩺</span>
+            <div class="text">
+                <h3>Для Врачей (Валдай амбулатория)</h3>
+                <p>Инструкции для врачей (Валдай амбулатория)</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Для медицинских сестёр (Валдай амбулатория) -->
+    <a href="Nurse_valday.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩺</span>
+            <div class="text">
+                <h3>Для медицинских сестёр (Валдай амбулатория)</h3>
+                <p>Инструкции для медицинских сестёр (Валдай амбулатория)</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Для Врачей стационара (Валдай) -->
+    <a href="Doctors_stac_valday.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩺</span>
+            <div class="text">
+                <h3>Для Врачей стационара (Валдай)</h3>
+                <p>Инструкции для врачей стационара (Валдай)</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Для медицинских сестёр стационара (Валдай стационар) -->
+    <a href="Nurse_stac_valday.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩺</span>
+            <div class="text">
+                <h3>Для медицинских сестёр стационара (Валдай стационар)</h3>
+                <p>Инструкции для медицинских сестёр стационара (Валдай стационар)</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Диспансеризация -->
+    <a href="Dispanserisation.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🩹</span>
+            <div class="text">
+                <h3>Диспансеризация</h3>
+                <p>Инструкции по диспансеризации населения</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: АРМ Аптека -->
+    <a href="apteka.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">💊</span>
+            <div class="text">
+                <h3>АРМ Аптека</h3>
+                <p>Инструкции по работе с АРМ Аптека</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Видео -->
+    <a href="video.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🎬</span>
+            <div class="text">
+                <h3>Видео</h3>
+                <p>Обучающие видео и инструкции</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Кассы -->
+    <a href="cash.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🖨️</span>
+            <div class="text">
+                <h3>Кассы</h3>
+                <p>Пути работы с кассами</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Категория: Кассы для IT -->
+    <a href="cash_admins.html" style="text-decoration: none; color: inherit;">
+        <div class="menu-card">
+            <span class="icon">🖨️</span>
+            <div class="text">
+                <h3>Кассы для IT</h3>
+                <p>Пути решения разных ситуаций с кассами</p>
+            </div>
+            <span class="arrow">→</span>
+        </div>
+    </a>
+
+    <!-- Кнопка закрытия -->
     <button class="back-button" id="closeApp">Закрыть инструкцию</button>
 
     <script src="https://dev.max.ru/js/bridge.min.js"></script>
