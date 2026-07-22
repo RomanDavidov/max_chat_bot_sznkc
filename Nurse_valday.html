@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Для медицинских сестёр(Валдай амбулатория)</title>
+    <link rel="stylesheet" href="https://dev.max.ru/ui/main.min.css">
+    <style>
+        :root { --primary-teal: #26a69a; --primary-dark: #00897b; --primary-light: #e0f2f1; --card-shadow: rgba(38,166,154,0.12); }
+        body { background-color: var(--primary-light) !important; color: #1a2a2a; font-family: -apple-system, sans-serif; padding: 16px; margin: 0; min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .instruction-card { background-color: #fff; border-radius: 16px; padding: 20px 18px; margin-bottom: 18px; box-shadow: 0 4px 12px var(--card-shadow); border: 1px solid rgba(38,166,154,0.08); }
+        .instruction-card h2 { margin-top: 0; margin-bottom: 12px; color: var(--primary-dark); font-size: 19px; font-weight: 600; border-bottom: 2px solid var(--primary-teal); padding-bottom: 10px; }
+        .instruction-card .section { margin-bottom: 24px; }
+        .instruction-card .section:last-child { margin-bottom: 0; }
+        .instruction-card .section img { max-width: 100%; border-radius: 8px; margin: 8px 0 12px; border: 1px solid #e0e0e0; }
+        .instruction-card .section video { max-width: 100%; border-radius: 8px; margin: 8px 0; }
+        .back-button { display: inline-block; margin-top: 20px; padding: 12px 24px; background: var(--primary-teal); color: #fff; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box; box-shadow: 0 4px 8px rgba(38,166,154,0.25); }
+        .back-button:active { background: var(--primary-dark); transform: scale(0.97); }
+        h1 { color: var(--primary-dark); font-size: 22px; font-weight: 700; }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1a2e2e !important; }
+            .instruction-card { background-color: #243b3b; border-color: #2e4a4a; }
+            .instruction-card h2 { color: #80cbc4; border-bottom-color: #4db6ac; }
+            .instruction-card .section p, .instruction-card .section div { color: #d0e0e0; }
+            h1 { color: #80cbc4; }
+            .back-button { background-color: #4db6ac; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Для медицинских сестёр(Валдай амбулатория)</h1>
+        <div class="instruction-card">
+            <p style="color: #666; margin-bottom: 16px;">Инструкции для медицинских сестёр(Валдай амбулатория)</p>
+<div class="empty-state">В этой категории пока нет инструкций.</div>
+        </div>
+        <button class="back-button" id="closeApp">Закрыть</button>
+    </div>
+    <script src="https://dev.max.ru/js/bridge.min.js"></script>
+    <script>
+        document.getElementById('closeApp').addEventListener('click', function() {
+            if (window.MAXBridge) window.MAXBridge.close();
+            else alert('Закрытие (в MAX)');
+        });
+    </script>
+</body>
+</html>
+  
