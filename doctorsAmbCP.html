@@ -28,6 +28,72 @@
             h1 { color: #80cbc4; }
             .back-button { background-color: #4db6ac; }
         }
+		.bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 12px 16px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 12px;
+            z-index: 999;
+            border-top: 1px solid rgba(38,166,154,0.1);
+        }
+        .bottom-nav a, .bottom-nav button {
+            flex: 1;
+            text-align: center;
+            padding: 14px 10px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.15s;
+        }
+        .bottom-nav .btn-back {
+            background: #e8ecec;
+            color: #1a2a2a;
+        }
+        .bottom-nav .btn-back:active {
+            background: #d0d7d7;
+            transform: scale(0.97);
+        }
+        .bottom-nav .btn-close {
+            background: var(--primary-teal);
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(38,166,154,0.25);
+        }
+        .bottom-nav .btn-close:active {
+            background: var(--primary-dark);
+            transform: scale(0.97);
+        }
+        /* Отступ снизу, чтобы контент не перекрывался панелью */
+        .container {
+            padding-bottom: 100px;
+        }
+        @media (prefers-color-scheme: dark) {
+            .bottom-nav {
+                background: #1e3a3a;
+                border-top-color: #2e4a4a;
+            }
+            .bottom-nav .btn-back {
+                background: #2e4a4a;
+                color: #d0e0e0;
+            }
+            .bottom-nav .btn-back:active {
+                background: #3a5a5a;
+            }
+            .bottom-nav .btn-close {
+                background: #4db6ac;
+            }
+            .bottom-nav .btn-close:active {
+                background: #26a69a;
+            }
+        }
     </style>
 </head>
 <body>
@@ -174,6 +240,11 @@
             else alert('Закрытие (в MAX)');
         });
     </script>
+	 <!-- Фиксированная нижняя панель -->
+    <div class="bottom-nav">
+        <a href="index.html" class="btn-back">← Назад к списку</a>
+        <button class="btn-close" id="closeApp">Закрыть</button>
+    </div>
 </body>
 </html>
   
