@@ -10,6 +10,8 @@
         body { background-color: var(--primary-light) !important; color: #1a2a2a; font-family: -apple-system, sans-serif; padding: 16px; margin: 0; min-height: 100vh; }
         .container { max-width: 800px; margin: 0 auto; padding-bottom: 100px; }
         .instruction-card { background-color: #fff; border-radius: 16px; padding: 20px 18px; margin-bottom: 18px; box-shadow: 0 4px 12px var(--card-shadow); border: 1px solid rgba(38,166,154,0.08); }
+        .instruction-card .section img { max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0 12px; border: 1px solid #e0e0e0; }
+        .instruction-card .section video { max-width: 100%; border-radius: 8px; margin: 8px 0; }
         .back-link { display: inline-block; margin-bottom: 16px; color: var(--primary-teal); text-decoration: none; font-weight: 500; }
         .back-link:hover { text-decoration: underline; }
         h1 { color: var(--primary-dark); font-size: 22px; font-weight: 700; }
@@ -55,7 +57,7 @@
             color: #fff;
         }
 
-        /* Аккордеон */
+        /* Аккордеон (исправлен max-height) */
         .accordion-item {
             margin-bottom: 12px;
             border: 1px solid rgba(38,166,154,0.1);
@@ -92,7 +94,7 @@
         }
         .accordion-item.open .accordion-body {
             padding: 16px;
-            max-height: 2000px;
+            max-height: 99999px; /* достаточно большое значение для длинного контента */
         }
 
         /* Фиксированная нижняя панель */
