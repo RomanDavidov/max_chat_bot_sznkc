@@ -8,26 +8,94 @@
     <style>
         :root { --primary-teal: #26a69a; --primary-dark: #00897b; --primary-light: #e0f2f1; --card-shadow: rgba(38,166,154,0.12); }
         body { background-color: var(--primary-light) !important; color: #1a2a2a; font-family: -apple-system, sans-serif; padding: 16px; margin: 0; min-height: 100vh; }
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 800px; margin: 0 auto; padding-bottom: 100px; }
         .instruction-card { background-color: #fff; border-radius: 16px; padding: 20px 18px; margin-bottom: 18px; box-shadow: 0 4px 12px var(--card-shadow); border: 1px solid rgba(38,166,154,0.08); }
-        .instruction-card h2 { margin-top: 0; margin-bottom: 12px; color: var(--primary-dark); font-size: 19px; font-weight: 600; border-bottom: 2px solid var(--primary-teal); padding-bottom: 10px; }
-        .instruction-card .section { margin-bottom: 24px; }
-        .instruction-card .section:last-child { margin-bottom: 0; }
-        .instruction-card .section img { max-width: 100%; border-radius: 8px; margin: 8px 0 12px; border: 1px solid #e0e0e0; }
-        .instruction-card .section video { max-width: 100%; border-radius: 8px; margin: 8px 0; }
         .back-link { display: inline-block; margin-bottom: 16px; color: var(--primary-teal); text-decoration: none; font-weight: 500; }
         .back-link:hover { text-decoration: underline; }
-        .back-button { display: inline-block; margin-top: 20px; padding: 12px 24px; background: var(--primary-teal); color: #fff; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box; box-shadow: 0 4px 8px rgba(38,166,154,0.25); }
-        .back-button:active { background: var(--primary-dark); transform: scale(0.97); }
         h1 { color: var(--primary-dark); font-size: 22px; font-weight: 700; }
-        @media (prefers-color-scheme: dark) {
-            body { background-color: #1a2e2e !important; }
-            .instruction-card { background-color: #243b3b; border-color: #2e4a4a; }
-            .instruction-card h2 { color: #80cbc4; border-bottom-color: #4db6ac; }
-            .instruction-card .section p, .instruction-card .section div { color: #d0e0e0; }
-            h1 { color: #80cbc4; }
-            .back-button { background-color: #4db6ac; }
+
+        /* Оглавление */
+        .toc {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            border: 1px solid rgba(38,166,154,0.08);
         }
+        .toc h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-dark);
+            font-size: 17px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .toc ul li {
+            margin: 0;
+        }
+        .toc ul li a {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: 0.15s;
+            border: 1px solid rgba(38,166,154,0.1);
+        }
+        .toc ul li a:hover {
+            background: var(--primary-teal);
+            color: #fff;
+        }
+
+        /* Аккордеон */
+        .accordion-item {
+            margin-bottom: 12px;
+            border: 1px solid rgba(38,166,154,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            padding: 14px 16px;
+            background: var(--primary-light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-dark);
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .accordion-header:hover {
+            background: #c8e6e0;
+        }
+        .accordion-icon {
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+        .accordion-item.open .accordion-icon {
+            transform: rotate(90deg);
+        }
+        .accordion-body {
+            padding: 0 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .accordion-item.open .accordion-body {
+            padding: 16px;
+            max-height: 2000px;
+        }
+
+        /* Фиксированная нижняя панель */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -71,11 +139,38 @@
             background: var(--primary-dark);
             transform: scale(0.97);
         }
-        /* Отступ снизу, чтобы контент не перекрывался панелью */
-        .container {
-            padding-bottom: 100px;
-        }
+
         @media (prefers-color-scheme: dark) {
+            body { background-color: #1a2e2e !important; }
+            .instruction-card { background-color: #243b3b; border-color: #2e4a4a; }
+            .instruction-card .section p, .instruction-card .section div { color: #d0e0e0; }
+            h1 { color: #80cbc4; }
+            .toc {
+                background: #243b3b;
+                border-color: #2e4a4a;
+            }
+            .toc h3 {
+                color: #80cbc4;
+            }
+            .toc ul li a {
+                background: #2a4a4a;
+                color: #d0e0e0;
+                border-color: #3a5a5a;
+            }
+            .toc ul li a:hover {
+                background: #4db6ac;
+                color: #fff;
+            }
+            .accordion-header {
+                background: #2a4a4a;
+                color: #80cbc4;
+            }
+            .accordion-header:hover {
+                background: #3a5a5a;
+            }
+            .accordion-item {
+                border-color: #2e4a4a;
+            }
             .bottom-nav {
                 background: #1e3a3a;
                 border-top-color: #2e4a4a;
@@ -97,27 +192,64 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Назад к списку</a>
-        <h1>🩺 Для медицинских сестёр стационара(Валдай стационар)</h1>
-        <div class="instruction-card">
-            <p style="color: #666; margin-bottom: 16px;">Инструкции для медицинских сестёр стационара(Валдай стационар)</p>
-<div class="empty-state">В этой категории пока нет инструкций.</div>
-        </div>
-        <button class="back-button" id="closeApp">Закрыть</button>
+<div class="container">
+    <a href="index.html" class="back-link">← Назад к списку</a>
+    <h1>🩺 Для медицинских сестёр стационара(Валдай стационар)</h1>
+    <p style="color: #4d6b6b; margin-bottom: 16px;">Инструкции для медицинских сестёр стационара(Валдай стационар)</p>
+    
+    
+    
+    <div class="instruction-card">
+        <div class="empty-state">В этой категории пока нет инструкций.</div>
     </div>
-    <script src="https://dev.max.ru/js/bridge.min.js"></script>
-    <script>
-        document.getElementById('closeApp').addEventListener('click', function() {
-            if (window.MAXBridge) window.MAXBridge.close();
-            else alert('Закрытие (в MAX)');
+</div>
+
+<div class="bottom-nav">
+    <a href="index.html" class="btn-back">← Назад к списку</a>
+    <button class="btn-close" id="closeApp">Закрыть</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ---- Аккордеон ----
+        const headers = document.querySelectorAll('.accordion-header');
+        headers.forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.closest('.accordion-item');
+                if (item) {
+                    // Закрываем другие открытые (опционально)
+                    // const openItems = document.querySelectorAll('.accordion-item.open');
+                    // openItems.forEach(oi => { if (oi !== item) oi.classList.remove('open'); });
+                    item.classList.toggle('open');
+                }
+            });
         });
-    </script>
-    <!-- Фиксированная нижняя панель -->
-    <div class="bottom-nav">
-        <a href="index.html" class="btn-back">← Назад к списку</a>
-        <button class="btn-close" id="closeApp">Закрыть</button>
-    </div>
+
+        // ---- Закрытие мини-приложения ----
+        const closeBtn = document.getElementById('closeApp');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                if (window.MAXBridge && typeof window.MAXBridge.close === 'function') {
+                    window.MAXBridge.close();
+                    return;
+                }
+                if (window.WebApp && typeof window.WebApp.close === 'function') {
+                    window.WebApp.close();
+                    return;
+                }
+                if (typeof window.close === 'function') {
+                    window.close();
+                } else {
+                    alert('Закрытие (в MAX)');
+                }
+            });
+        }
+
+        // Инициализация MAXBridge (если доступен)
+        if (window.MAXBridge && typeof window.MAXBridge.ready === 'function') {
+            window.MAXBridge.ready();
+        }
+    });
+</script>
 </body>
 </html>
-  
