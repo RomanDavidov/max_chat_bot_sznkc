@@ -125,20 +125,19 @@
     <!-- Кнопка закрытия -->
     <button class="back-button" id="closeApp">Закрыть инструкцию</button>
 
-    <script src="https://dev.max.ru/js/bridge.min.js"></script>
-    <script>
+     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            if (window.MAXBridge) {
-                window.MAXBridge.ready();
-                console.log('MAXBridge готов (главная)');
-            }
             const closeBtn = document.getElementById('closeApp');
             if (closeBtn) {
                 closeBtn.addEventListener('click', function() {
-                    if (window.MAXBridge) {
-                        window.MAXBridge.close();
+                    // Если хотите включить предупреждение о потере данных:
+                    // if (window.WebApp) window.WebApp.enableClosingConfirmation();
+                    
+                    if (window.WebApp && typeof window.WebApp.close === 'function') {
+                        window.WebApp.close();
                     } else {
-                        alert('Закрытие (в MAX это сработает)');
+                        // Fallback: если WebApp не доступен (например, при тестировании в браузере)
+                        alert('Закрытие (в MAX)');
                     }
                 });
             }
