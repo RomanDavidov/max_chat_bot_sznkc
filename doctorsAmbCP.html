@@ -639,31 +639,31 @@
             });
         });
 
-        // ---- Закрытие мини-приложения ----
-        const closeBtn = document.getElementById('closeApp');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                if (window.MAXBridge && typeof window.MAXBridge.close === 'function') {
-                    window.MAXBridge.close();
-                    return;
-                }
-                if (window.WebApp && typeof window.WebApp.close === 'function') {
-                    window.WebApp.close();
-                    return;
-                }
-                if (typeof window.close === 'function') {
-                    window.close();
-                } else {
-                    alert('Закрытие (в MAX)');
-                }
-            });
+        <script src="https://st.max.ru/js/max-web-app.js"></script>
+    <script>
+    document.getElementById('closeApp').addEventListener('click', function() {
+        // 1. Основной способ в MAX (WebApp)
+        if (window.WebApp && typeof window.WebApp.close === 'function') {
+            window.WebApp.close();
+            return;
         }
-
-        // Инициализация MAXBridge (если доступен)
-        if (window.MAXBridge && typeof window.MAXBridge.ready === 'function') {
-            window.MAXBridge.ready();
+        // 2. Альтернативный способ (MAXBridge)
+        if (window.MAXBridge && typeof window.MAXBridge.close === 'function') {
+            window.MAXBridge.close();
+            return;
+        }
+        // 3. Fallback
+        if (typeof window.close === 'function') {
+            window.close();
+        } else {
+            alert('Закрытие (в MAX)');
         }
     });
+
+    // Инициализация WebApp (если доступен)
+    if (window.WebApp && typeof window.WebApp.ready === 'function') {
+        window.WebApp.ready();
+    }
 </script>
 </body>
 </html>
