@@ -233,31 +233,31 @@
         </div>
         <button class="back-button" id="closeApp">Закрыть</button>
     </div>
-    <script src="https://dev.max.ru/js/bridge.min.js"></script>
+	 <!-- Фиксированная нижняя панель -->
+    <div class="bottom-nav">
+        <a href="index.html" class="btn-back">← Назад к списку</a>
+        <button class="btn-close" id="closeApp">Закрыть</button>
+    </div>
+
+	<!-- Закрытие мини-приложения -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const closeBtn = document.getElementById('closeApp');
         if (closeBtn) {
             closeBtn.addEventListener('click', function() {
-                if (typeof window.MAXBridge !== 'undefined' && window.MAXBridge.close) {
-                    // Явно сообщаем, что приложение готово к закрытию
-                    if (window.MAXBridge.ready) {
-                        window.MAXBridge.ready();
-                    }
-                    window.MAXBridge.close();
+                // Проверяем, доступен ли WebApp
+                if (window.WebApp && typeof window.WebApp.close === 'function') {
+                    // Включаем предупреждение (если нужно)
+                    // window.WebApp.enableClosingConfirmation();
+                    window.WebApp.close();
                 } else {
-                    // fallback, если мост не загружен
+                    // Fallback, если WebApp не доступен
                     alert('Закрытие (в MAX)');
                 }
             });
         }
     });
 </script>
-	 <!-- Фиксированная нижняя панель -->
-    <div class="bottom-nav">
-        <a href="index.html" class="btn-back">← Назад к списку</a>
-        <button class="btn-close" id="closeApp">Закрыть</button>
-    </div>
 </body>
 </html>
   
