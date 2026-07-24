@@ -8,27 +8,84 @@
     <style>
         :root { --primary-teal: #26a69a; --primary-dark: #00897b; --primary-light: #e0f2f1; --card-shadow: rgba(38,166,154,0.12); }
         body { background-color: var(--primary-light) !important; color: #1a2a2a; font-family: -apple-system, sans-serif; padding: 16px; margin: 0; min-height: 100vh; }
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 800px; margin: 0 auto; padding-bottom: 100px; }
         .instruction-card { background-color: #fff; border-radius: 16px; padding: 20px 18px; margin-bottom: 18px; box-shadow: 0 4px 12px var(--card-shadow); border: 1px solid rgba(38,166,154,0.08); }
-        .instruction-card h2 { margin-top: 0; margin-bottom: 12px; color: var(--primary-dark); font-size: 19px; font-weight: 600; border-bottom: 2px solid var(--primary-teal); padding-bottom: 10px; }
+        .instruction-card h2 { margin-top: 0; margin-bottom: 12px; color: var(--primary-dark); font-size: 19px; font-weight: 600; border-bottom: 2px solid var(--primary-teal); padding-bottom: 10px; scroll-margin-top: 20px; }
         .instruction-card .section { margin-bottom: 24px; }
         .instruction-card .section:last-child { margin-bottom: 0; }
         .instruction-card .section img { max-width: 100%; border-radius: 8px; margin: 8px 0 12px; border: 1px solid #e0e0e0; }
         .instruction-card .section video { max-width: 100%; border-radius: 8px; margin: 8px 0; }
-		.back-link { display: inline-block; margin-bottom: 16px; color: var(--primary-teal); text-decoration: none; font-weight: 500; }
-		.back-link:hover { text-decoration: underline; }
-        .back-button { display: inline-block; margin-top: 20px; padding: 12px 24px; background: var(--primary-teal); color: #fff; border: none; border-radius: 30px; font-size: 16px; cursor: pointer; width: 100%; text-align: center; box-sizing: border-box; box-shadow: 0 4px 8px rgba(38,166,154,0.25); }
-        .back-button:active { background: var(--primary-dark); transform: scale(0.97); }
+        .back-link { display: inline-block; margin-bottom: 16px; color: var(--primary-teal); text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
         h1 { color: var(--primary-dark); font-size: 22px; font-weight: 700; }
+
+        /* ---- Оглавление ---- */
+        .toc {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--card-shadow);
+            border: 1px solid rgba(38,166,154,0.08);
+        }
+        .toc h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-dark);
+            font-size: 17px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .toc ul li {
+            margin: 0;
+        }
+        .toc ul li a {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: 0.15s;
+            border: 1px solid rgba(38,166,154,0.1);
+        }
+        .toc ul li a:hover {
+            background: var(--primary-teal);
+            color: #fff;
+        }
+
         @media (prefers-color-scheme: dark) {
             body { background-color: #1a2e2e !important; }
             .instruction-card { background-color: #243b3b; border-color: #2e4a4a; }
             .instruction-card h2 { color: #80cbc4; border-bottom-color: #4db6ac; }
             .instruction-card .section p, .instruction-card .section div { color: #d0e0e0; }
             h1 { color: #80cbc4; }
-            .back-button { background-color: #4db6ac; }
+            .toc {
+                background: #243b3b;
+                border-color: #2e4a4a;
+            }
+            .toc h3 {
+                color: #80cbc4;
+            }
+            .toc ul li a {
+                background: #2a4a4a;
+                color: #d0e0e0;
+                border-color: #3a5a5a;
+            }
+            .toc ul li a:hover {
+                background: #4db6ac;
+                color: #fff;
+            }
         }
-		.bottom-nav {
+
+        /* ---- Фиксированная нижняя панель ---- */
+        .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -71,10 +128,6 @@
             background: var(--primary-dark);
             transform: scale(0.97);
         }
-        /* Отступ снизу, чтобы контент не перекрывался панелью */
-        .container {
-            padding-bottom: 100px;
-        }
         @media (prefers-color-scheme: dark) {
             .bottom-nav {
                 background: #1e3a3a;
@@ -97,142 +150,28 @@
     </style>
 </head>
 <body>
-    <div class="container">
-		<a href="index.html" class="back-link">← Назад к списку</a>
-        <h1>🩺 Для Врачей и медицинских сестёр(Амбулатория ЦП)</h1>
-        <div class="instruction-card">
-            <p style="color: #666; margin-bottom: 16px;">Инструкции для врачей и медицинских сестёр</p>
-<h2>1. РАБОТА С НОВЫМИ ПРОТОКОЛАМИ ВК</h2><div class="section"><span style="font-size:24px">1.1.	Находятся в папке Общие – ВК_ЦП </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695137361-623716163.png" alt=""><br><br><span style="font-size:24px">1.2.	В каждом врачебном протоколе (первичный, повторный) создан раздел ВК: </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695181627-654077142.png" alt=""><br><br><span style="font-size:24px">1.3.	Выбираем нужное, заполняем все необходимо в протоколе, далее подписываем ЭЦП, далее автоматически будет добавлен протокол -  «Выписки из протокола подкомиссии по ЭВН».<br>Осмотр подписывает врачом, Выписка подписывается ЭП членами комиссии и председателем.<br>1.4.	Эпикриз ЭВН (прошедший период), далее Выписка из протокола Прошедший период<br>Эпикриз подписывается врачом, Выписка членами комиссии и председателем.<br>1.5.	Эпикриз на подкомиссию по ЭВН (Дубликат), далее Выписка из протокола подкомиссии по ЭВН (Дубликат)<br>Эпикриз подписывается врачом, Выписка членами комиссии и председателем.<br>1.6.	Выписка из протокола ЭВН МСЭ<br>•	 В каждом врачебном протоколе (первичный, повторный) создан раздел МСЭ</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695232862-63986201.png" alt=""><br><br><span style="font-size:24px">Первая строчка для варианта когда мы направляем на ОБСЛЕДОВАНИЯ, необходимых для получения клинико-фукнциональных данных.<br>Вторая строчка – когда уже выполнены исследования и пациента направлен на подкомиссию по ЭВН для решения вопроса о направлении на МСЭ.<br>•	При формировании Выписки из протокола созданы варианты ЭВН МСЭ1 и ЭВН МСЭ2<br>ЭВН МСЭ 1 выбираем когда мы во врачебном протоколе выбрали первый вариант, т.е. для направления на обследования.<br>•	Если мы уже направляем для решения вопроса о направлении на МСЭ выбираем протокол «Выписка из протокола ЭВН МСЭ 2», где мы выбираем нужные значения.  <br>•	Строчку с точкой мы пользуемся только в случае когда основания для МСЭ НЕ ВЫЯВЛЕНЫ. </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695281354-97221933.png" alt=""><br><br><span style="font-size:24px">1.7	. Контроль заведующего (Для ЭЛН)<br>Если в протоколе специалиста, заполнено поле Контроль заведующего.. заполняем все необходимо в протоколе, далее подписываем ЭЦП, далее автоматически будет добавлен протокол , автоматически будет добавлен протокол «Контроль заведующего (ЭВН)»<br>Осмотр подписывается врачом, Контроль заведующего подписывается -  ЭП  председателем и заместителем. <br></span></div><h2>Краткая инструкция АМБУЛАТОРНАЯ ИСТОРИЯ</h2><div class="section"><strong>АМБУЛАТОРНАЯ ИСТОРИЯ</strong></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1.png" alt=""></div><div class="section">Ввели пароль и нажали «ОК», если у мед.сестры несколько отделений , то в выпадающем окне необходимо выбрать нужное отделение  и нажать «да».</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/2.png" alt=""></div><div class="section"><strong>Алгоритм работы в программе: </strong>
-<strong>1)</strong> Мед. сестра работает во вкладке</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/13.png" alt=""></div><div class="section"><strong>2) Выбрали врача, себя как мед. сестру (это необходимо для проставления данных в талоне и услугах)</strong></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/3.png" alt=""></div><div class="section"><strong>3) 'Талон', проверяем и заполняем поля: </strong></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/4.png" alt=""></div><div class="section"><strong>•</strong> «Тип посещения»
-<strong>•</strong> «Медсестра» – если не проставлено
-<strong>•</strong> «Цель посещения»
-<strong>•</strong> «Законченность»
-<strong>•</strong> «Исход»
-<strong>•</strong> «Результат лечения»
-<strong>•</strong> «Диагноз»
-Дополнительно проверяем и заполняем:
-<strong>•</strong> Характер заболеваемости
-<strong>•</strong> Диспансерный учет (Состоит/взят/не состоит и тд.)</div><div class="section"><strong>4) Услуги. </strong>
-Проверить, нет ли  не прикрепленных услуг к талону <strong>(у платных пациентов)</strong>, чтобы не создавать дубли.
-Добавил ли врач свою услугу  и т.д.</div><div class="section"><strong>4.1. Добавляем услугу с помощью кнопки «По врачу», либо кнопкой «Добавить».</strong></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/5.png" alt=""></div><div class="section">Выставляем все добавленные услуги либо одну услугу в оплату по кнопке «Оплата»</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/6.png" alt=""></div><div class="section">Для сохранения талона нажимаем кнопку «Да» в нижнем правом углу.</div><div class="section"><strong>4.2. ВАЖНО!!! Мы не добавляем еще одну услугу, а привязываем созданную в кассе к посещению пациента!</strong></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/7.png" alt=""></div><div class="section"><strong>•</strong> Вкладка «Услуги»: мы не создаем услугу, а справа жмем галочку</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/8.png" alt=""></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/9.png" alt=""></div><div class="section"><strong>•</strong> 1-проставили галочку;
-<strong>•</strong> 2- нажали один раз левой кнопкой мыши на услугу;
-<strong>•</strong> 3- связали платеж с посещением ;</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/10.png" alt=""></div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/11.png" alt=""></div><div class="section"><strong>•</strong> 4- подтверждаем прикрепление услуги;</div><div class="section"><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/12.png" alt=""></div><div class="section"><strong>Готово</strong>, при необходимости выставляем услугу в оплату.</div><h2>АЛГОРИТМ РАБОТЫ ВО ВКЛАДКЕ СТАНДАРТЫ МЕД. ПОМОЩИ</h2><div class="section"><span style="color:#ff8888">1.	<span style="font-size:24px">ПЕРЕД ДОБАВЛЕНИЕМ СТАНДАРТА ЛЕЧЕНИЯ, НЕОБХОДИМО ЗАПОЛНИТЬ ТАЛОН И ОБЯЗАТЕЛЬНО  ПРОСТАВИТЬ ДИАГНОЗ</span>.</span><br><br><span style="color:#ff8888">**2.	<span style="font-size:24px">ПЕРЕХОДИМ ВО ВКЛАДКУ СТАНДАРТЫ МЕД. ПОМОЩИ</span>:**</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782215849870-253277279.png" alt=""><br><br><span style="font-size:24px">- жмём добавить;<br>- выбираем подходящую группу;<br>- жмём «Да»;</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782226649395-575472931.png" alt=""><br><span style="font-size:24px"><br>- всплывет еще одно окно-  Жмём «ОК»; </span><br><br><span style="color:#ff8888">**<span style="font-size:24px">3. УСЛУГИ ПО ВЫБРАННОМУ СТАНДАРТУ</span>**</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782227141091-752499920.png" alt=""><br><br><span style="font-size:24px">Чуть ниже появится панель с вкладками. Во вкладке услуги -  отображается все , что входит в выбранный стандарт.  </span><br><br><span style="color:#ff8888">**<span style="font-size:24px">4. ПЛАНИРУЕМ ВИЗИТ ПАЦИЕНТА НА КОНСУЛЬТАЦИЮ К СПЕЦИАЛИСТУ</span>**</span><br><br><span style="font-size:24px">1)	Выбрали услугу: Приём врача – терапевта – жмём «Запланировать» - автоматически проставляется текущая дата. <br>2) Для редактирования даты : Либо  вводите дату сразу в услуге приёма и жмёте ENTER. Либо перейдите во вкладку   планируемые услуги, и изменить дату. (Если нет данной вкладке в АРМе «Врач Поликлиники» сообщите, добавим)</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782227496588-424635786.png" alt=""><br><br><span style="color:#ff8888">**<span style="font-size:24px">5. ЗАПИСЬ К СПЕЦИАЛИСТУ</span>**</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782228314596-325389743.png" alt=""><br><br><span style="font-size:24px">Во вкладке (сверху) «Планируемые услуги»: вы можете произвести запись на прием к специалистам.<br>1)	Жмём « Обработать (номерок)» - ввели ФИО специалиста, выбрали нужную дату, время. – далее «Выдать» </span><br><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782228409471-900423747.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782228438638-916230842.png" alt=""><br><br><span style="font-size:24px"> Откроется окно подтверждения: Кликаем  два раза левой кнопкой мыши на время справа – «Выдать»</span><br>	<br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782228775643-770615195.png" alt=""><br><br><span style="font-size:24px">2)	 Либо пациента записывают в регистратуре. (При этом, не стоит жать «Обработать номерок»). Требуется распечатать маршрут записи: </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782228842727-709475708.png" alt=""><br><br><span style="font-size:24px">После того, как нажали запланировать запись, жмём сверху «Печать» - печатаете документ и отправляете пациента в регистратуру.  </span><br><br>**<span style="color:#ff8888"><span style="font-size:24px">6. ФОРМИРОВАНИЕ НАПРАВЛЕНИЙ НА ДИАГНОСТИЧЕСКИЕ ИССЛЕДОВАНИЯ</span></span>**<br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782229183329-617041817.png" alt=""><br><br><span style="font-size:24px">Во вкладке диагностика: <br>•	Выбрали исследование из перечня: нажали « + Назначить»  - откроется стандартное направление на исследование – указали цель, проверили данные, - «Сохранить».<br>•	Печатаете направление, после пункта выше.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782229238583-279405884.png" alt=""><br><br>**<span style="color:#ff8888"><span style="font-size:24px">7. ФОРМИРОВАНИЕ НАПРАВЛЕНИЙ НА ЛАБОРАТОРНЫЕ ИССЛЕДОВАНИЯ.</span></span>**<br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782229350275-569028174.png" alt=""><br><br><span style="font-size:24px">Во вкладке «Лаборатория» выбираем исследования, отмечаем «пробелом», жмём «+Назначить», проверяем шифр и жмём «Да», (правило для ГКДЦ1 остается, как и в обычном приеме - только ОМС) </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782229399644-153917425.png" alt=""><br><br><span style="font-size:24px">По кнопке печать из этой же вкладки вы смежите подтвердить лаб. исследование и отправить на печать направление.  </span><br><br>**<span style="color:#ff8888"><span style="font-size:24px">8. ИНФОРМАЦИЯ ПО КЛИНИЧЕСКИМ РЕКОМЕНДАЦИЯМ</span>.</span>**<br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782229506358-881978552.png" alt=""><br><br><span style="font-size:24px">Во вкладке стандарты мед. помощи – жмём на   - откроется краткая информация по диагнозу - далее жмём «ДОКУМЕНТ» - откроется документ по Клин. Рекомендациям  утвержденный  МЗ РФ</span></div><h2>Инструкция по заполнению справки 086-у (СЭМД -196)</h2><div class="section">1.	Данная справка заполняется во вкдке «История» - «Протоколы». 
-2.	Нажимаем «Добавить»
-3.	Форма находится в папке «Поликлиника ЦП» - «Справки» -«Медицинская справка 086/у (врачебное профессионально- консультативное заключение)»
+<div class="container">
+    <a href="index.html" class="back-link">← Назад к списку</a>
+    <h1>🩺 Для Врачей и медицинских сестёр (Амбулатория ЦП)</h1>
 
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782230215827-217849129.png" alt="">
-
-4.	Заполняем протокол.
-- поля помеченные красной звездочкой, и выделенные оранжевым цветом обязательны     для заполнения;
-- наименование поля выделенное синим цветом обозначает заполнение из справочника, путем нажатия на «Enter»;
-- серый цвет наименования  поля обозначает заполнение путем ручного ввода данных.
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782230263266-908383399.png" alt="">
-
-5.	Подписываем протокол</div><h2>Амбулаторный приём</h2><div class="section">
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782484928416-571256289.png" alt="">
-
-1.	Открывается вкладка «Амбулаторный прием», где отображается список пациентов на заданный период дат, по умолчанию текущая дата. 
-*Красные пациенты, которые по времени опоздали на пол часа, 
-*Зеленые - обработанные. 
-
-Нажимаем 2 раза на строчку с пациентом.
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485025813-625551307.png" alt="">
-
-2.  При первом открытии электронной истории, открывается окно с выбором типа посещения, выбираем тип, либо привязываем к предыдущему посещению для продолжения случая.
-**ОТКРЫВ ПОСЕЩЕНИЕ, ЗАПОЛНЕНИЕ ТАЛОНА ОБЯЗАТЕЛЬНО!**
-
-</div><h2>Оформление протокола осмотра пациента</h2><div class="section">
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485350219-98017117.png" alt="">
-
-1.	После выбора типа случая -  попадаем в электронную историю болезни во вкладки «История/Протоколы», для добавления протокола нажимаем кнопку «Добавить».
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485417193-774508655.png" alt="">
-
-2. Выбираем необходимый протокол из списка форм.
- 
- 
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485484585-929277205.png" alt="">
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485511047-477181115.png" alt="">
-
-3. Синие поля вопросов протокола открывают варианты ответа, при нажатии на белую строку 2 раза, в серых полях нет ответов – сводобный ввод текста, в синих тоже доступен свободный ввод.
-Несколько вариантов ответа можно выбрать, удерживая Ctrl, либо выделяя поля пробелом. При выборе ответа можно добавить свой вариант, нажав кнопку «Свое значение» и заполнив поле «Полный текст».
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485608290-136506403.png" alt="">
-Для перехода на новую строку необходимо нажать клавиши Ctrl + Enter.
-Появились поля обязательные к заполнению, отмечены красной звездочкой. (И подсвечены темно-желтым цветом) </div><h2>Сохранение шаблона/ заполнение протокола по шаблону</h2><div class="section">
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485759455-541101673.png" alt="">
-
-1.	Для сохранения шаблона по протоколу необходимо нажать на кнопку "Сохранить как шаблон", выбрав типа шаблона для сортировки шаблона и заполнение шаблона с сохранением пустых полей, либо с сохранением только заполненных полей. Вводим название шаблона и нажимаем кнопку «Сохранить». Если требуется, можете создать группу, где будут все ваши личные шаблоны. 
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485819312-148097700.png" alt="">
-
-2. 	Для выбора шаблона нажимаем кнопку "По шаблону" и ищем шаблон по поиску во всех, общих или личных шаблонах, кликаем на шаблон и нажимаем кнопку "Да".
-  	После заполнения протокола по шаблону, можно вручную добавить текст в нужные строчки. </div><h2>Заполнение протокола путем копирования из истории</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782485949987-402602289.png" alt=""><br><br><span style="font-size:24px">1. 	Для копирования из истории необходимо нажать на кнопку "Копировать из истории", в окне "События истории лечения" можно выбрать протоколы, добавленные на прошлых посещениях. <br>После выбора протокола, выбираются конкретные поля для переноса, либо все поля в окне "Контролируемые вопросы". Так же можно копировать из других протоколов, открыв вкладки "Все события" или "История" с помощью правой кнопки мыши Копировать\Вставить либо Ctrl + C , Ctrl + V. <br>			</span><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486154124-829741071.png" alt=""><br><br><span style="font-size:24px">2. 	Обратите внимание! Если вы копируете информацию не из подобного протокола (пример: в прием добавили протокол осмотр терапевта - а копируете из протокола проф. осмотр офтальмолога) то, можно копировать информацию только для  одинаковых строчек. <br>•	Красным  – то, что можно скопировать (текст ярко серый);<br>•	Синий- то, что нельзя копировать (текст бледно серый); </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486260953-117440066.png" alt=""><br><span style="font-size:24px"><br>3.	При копировании может появиться окно (см. скрин ниже *В форме есть несохраненные данные. Сохранить перед копированием*), выбираете подходящий вариант, после данные скопируются.  <br><br>После заполнения протокола копированием из истории, можно вручную добавить текст в нужные строчки. </span></div><h2>Заполнение протокола путем копирования из событий</h2><div class="section">
-Копирование из события: слева протокол - в центе: строчки выбранного протокола и его содержание, справа: выбираете строчку добавленного вами протокола на приёме. (Т.е. куда будете копировать).
-		
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486473635-445282785.png" alt="">
-
-Если хотите добавить текст к уже существующему, то мышку (курсор) ставим рядом.
-Если хотите заменить введенные  данные или ответ по умолчанию, то выделяете текст в строчке (в окне справа), после выбираете  (в центре),  что хотите скопировать, два раза кликаем = информация скопируется и перезапишет данные. 
-По окончанию, жмем «Ок»
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486541609-681549520.png" alt="">
-</div><h2>Заполнение и подписание протокола</h2><div class="section">
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486691463-652494367.png" alt="">
-
-Поля с красной звездочкой обязательны к заполнению.
-Жмём «Закрыть», затем, Подписываем протокол 
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486769079-500478093.png" alt="">
-  и только после этого печатаем его. 
-Пожалуйста, убедитесь, что у вас есть личный ключ цифровой электронной подписи. Также не забудьте проставить диагноз в талоне.
-** Все поля СЭМД размещены в конце любого протокола. Они заполняются автоматически (серые строки), а белые строки содержат ответы по умолчанию, которые могут быть удалены при копировании и использовании шаблонов.
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486888845-802350273.png" alt="">
-
-	Если поле пустое, нужно кликнуть по строке и выбрать ответ из справочника.
-	
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782486985095-830965710.png" alt="">
-
-Для печати протокола нажимаем кнопку «Печать», 
-* Печать без ЭЦП, подписываем ручкой.
-* Печать с ЭЦП, формируется протокол осмотра с цифровой подписью
-</div><h2>Лабораторные исследования</h2><div class="section">
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487093234-256603163.png" alt="">
-
-Для добавления направлений на лабораторные исследования необходимо перейти во вкладку «Лаборатория» и нажать кнопку «Добавить».
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487146603-772518911.png" alt="">
-
-**ЖЕЛТЫЙ КРУГ - УСЛУГИ КДЛ 122**
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487215311-919438771.png" alt="">
-
-**Лабораторные исследования можно выбрать по материалу исследования\группе\шаблону. **
-	
-**	Во вкладке «шаблоны» для Вашего удобства созданы шаблоны по специальностям/отделениям.**
-
-После выбора материала, отображаются все исследования по выбранному материалу, так же после выбора шаблона, отображаются все исследования находящиеся в шаблоне. Выбираем исследование, выделив его и нажав кнопку "Выбрать" или кликнув на него 2 раза, после чего оно попадает в «Содержание заказа». Удалить можно выделив исследование в окне «Содержание заказа» либо кликнув на него 2 раза. После добавления всех исследований нажимаем кнопку «Да».
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487336784-892566179.png" alt="">
-
-### Лабораторные исследования ГКДЦ №1 необходимо создавать **отдельным заказом. **
-***(Отдельно формируем из каждой папки (Кровь, кал, моча,  и тд.)***
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487568854-554563703.png" alt="">
-
-Направление появляется в списке лабораторных исследований, после чего при необходимости его можно изменить \ удалить, если всё добавлено, верно, то «Подтверждаем» исследование и нажимаем кнопку «Печать». 
-Подтвержденное исследование удалить уже нельзя, если по какой-то причине исследование не нужно выполнять, то выбираем исследование и нажимаем кнопку «Аннулировать».
-
-<img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1782487618135-195926590.png" alt="">
-
-**При добавлении Валдайских услуг сработает проверка!**
-</div><h2>Школа здоровья</h2><div class="section"><span style="font-size:24px"><span style="color:#FAEBD7">Основа ведения пациентов по школе здоровья заключается в следующем: </span></span><br><span style="font-size:24px">1.	Общие условия.</span><br><span style="font-size:20px">1.1.	 Посещение пациента должно быть по шифру/полису «ОМС»;;<br>1.2.	 Цель посещения: Школы для хр. больных – (26);<br>1.3.	 Специальность врача;<br>1.4.	Диагноз<br>1.5.	Наличие ДН группы у пациента (если требуется по соответствующему диагнозу)<br>1.6.	Количество посещений </span><br><span style="font-size:24px">2.	ТАЛОН.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784269942537-815495853.png" alt=""><br><br><span style="font-size:20px">	Тип посещения: ПО СЛУЧАЮ;<br>	Цель посещения: ШКОЛЫ ДЛЯ ХР. БОЛЬНЫХ – (26);<br>	Диагноз;<br>	Результат обращения: (ИСХОД, РЕЗ,ЛЕЧЕНИЯ, ЗАКОНЧЕННОСТЬ);</span><br><br><span style="font-size:24px">2.1.	 МЭС.</span><br><span style="font-size:20px">Переходим во вкладку МЭС – жмём открыть МЭС - Кликаем в строчку – код МЭС – выбираем нужный код (будет один вариант) жмём «ДА»; </span><br><span style="font-size:24px">УСЛУГ ПО МЭСу НЕТ</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270034721-50828453.png" alt=""><br><br><span style="font-size:20px">2.2 Схема ведения МЭСа по ШЗ и соответвия количества посещений типу МЭСа</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270087455-53162314.png" alt=""><br></div><h2>Назначение диагностических исследований</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270690720-444004965.png" alt=""><br><br><span style="font-size:24px">1.	Для добавления диагностического исследования необходимо перейти во вкладку «Диагностика» и нажать кнопку «Добавить».</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270762952-226698259.png" alt=""><br><br><span style="font-size:24px">2.	Выбираем тип исследования, (в КТ /Рентгене/МРТ есть разбивка по органам) в поиске ищем необходимый вид исследования. Нажимаем кнопку «Да» либо 2 раза кликаем на строку.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270825611-437649874.png" alt=""><br><br><span style="font-size:24px">3.	Выбираем Шифр плательщика при необходимости ОМС\ДМС\Бюджет\Наличный расчет и т. д., если шифр остается прежний, то нажимаем кнопку «Сохранить». Также заполняем цель исследования. Это поможет врачу диагностического отделения понять, для чего будет произведено исследование. </span> <br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784270908197-461392431.png" alt=""><br><br><span style="font-size:24px">4. Направление появляется в списке диагностических исследований, выделяем его и нажимаем на кнопку «Печать».</span></div><h2>Заполнение талона и услуг посещения</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784290818045-614869169.png" alt=""><br><br><span style="font-size:24px">1.	Если необходимо, чтобы из протокола данные перенеслись в талон, то заполняем выделенные поля и диагноз, после чего нажимаем кнопку «Сохранить», затем   - подписать Цифровой электронной подписью. <br>(При подписании ЭЦП,  протокол автоматически закрывается, но данные в талон не переносятся).<br>!!!ПОЛЯ ТАЛОНА (ЦЕЛЬ, ИСХОД И ТД..) НАХОДЯТСЯ СВЕРХУ И ВНИЗУ ПРОТОКОЛОВ ОСМОТРА. <br></span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784290925145-955213480.png" alt=""><br><br><span style="font-size:24px">2.	Переходим во вкладку "Талон", проверяем и заполняем поля: <br>•	«Тип посещения»<br>•	«Медсестра"<br>•	«Цель посещения»<br>•	«Законченность»<br>•	«Исход»<br>•	«Результат лечения»<br>•	«Диагноз»</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784290985336-332774071.png" alt=""><br><br><span style="font-size:24px">3.	По целям посещения ДВН, ПМО, ДРЗ обязательно заполнение в талоне поля Диспансерный учёт. Даже на сопутствующем диагнозе.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784291069808-259132364.png" alt=""><br><br><span style="font-size:24px">4.	Добавляем услугу с помощью кнопки «По врачу», либо кнопкой «Добавить».</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784291129333-705021061.png" alt=""><br><br><span style="font-size:24px">5.	Выставляем все добавленные услуги либо одну услугу в оплату по кнопке «Оплата»<br>6.	Для сохранения талона нажимаем кнопку «Да» в нижнем правом углу.</span><br> <br></div><h2>Добавление услуги платным пациентам</h2><div class="section"><span style="font-size:24px">ВАЖНО!!!  Мы не добавляем еще одну  услугу, а привязываем созданную в кассе к посещению пациента!<br>1.	Оформили протокол осмотра, переходим во вкладку «Талон».</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295599590-796769441.png" alt=""><br><br><span style="font-size:24px">2.	Вкладка «Услуги»: мы не создаем услугу , а справа жмем галочку "не прикрепленные"</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295554597-97410722.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295660432-510256925.png" alt=""><br><br><span style="font-size:24px">•	1-проставили галочку;<br>•	2- нажали один раз левой кнопкой мыши на услугу;<br>•	3- связали платеж с посещением  ;</span> <br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295720383-996191110.png" alt=""><br><span style="font-size:24px">•	4- подтверждаем прикрепление услуги; </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295771246-935290167.png" alt=""><br><br><span style="font-size:24px">Готово, при необходимости выставляем услугу в оплату.  </span></div><h2>Запись на повторный прием</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295917960-34939897.png" alt=""><br><br><span style="font-size:24px">1.	 Для записи пациента на повторный прием нажимаем кнопку «Повторная явка», где отображается расписание врача, можно смотреть расписание, выбирая день в календаре. Нажимаем двойным кликом на номерок для записи пациента.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784295982941-670876896.png" alt=""><br><br><span style="font-size:24px">2.	Запись доступна во вкладке «Запись»:<br>•	Выбрали дату;<br>•	Доп.номерок;<br>•	Вводим номер карты.<br>Сохраняем данные.</span><br></div><h2>Вкладка "Амбулаторная история"</h2><div class="section"><span style="font-size:24px">Для удобства, добавлена вкладка «Амбулаторная история».<br>Можно просматривать посещения пациентов и заходить в протокол осмотра (уже состоявшегося визита) – двойным кликом мыши;<br>Вносить заключения ВК;<br>Проверять протоколы и тд.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784296128325-754795240.png" alt=""><br></div><h2>Просмотр истории болезни по пациенту</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784296288663-826662984.png" alt=""><br><br><span style="font-size:24px">На главной странице (вкладке) АРМ Врач поликлиники: выбираем нужного пациента – кликаем правой кнопкой мыши – выбираем «История лечения»</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784296341638-700077728.png" alt=""><br><br><span style="font-size:24px">Внизу выбираете нужную вкладку (Все события /лаб.исследование и тд)<br>Указываем период – находим нужную информацию.<br>!!! ПЕРЕД ПРОВЕДЕНИЕМ МЕДОСМОТРА- ТУТ МОЖНО ПРОВЕРИТЬ ЕСТЬ ЛИ ДЕЙСТВУЮЩАЯ ГОСПИТАЛИЗАЦИЯ (ДНЕВНОЙ ИЛИ ОБЫЧНЫЙ СТАЦИОНАР).</span></div><h2>Оформление ЭЛН</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299331073-160521065.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299369704-436408276.png" alt=""><br><br><span style="font-size:24px">Для добавления больничного листа выполняем вход в АРМ «СРПРАВКИ» , либо переходим из АРМ «Врач поликлиники» путем нажатия кнопки "ЭЛН"  в левом нижнем углу при заполнении посещения.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299440268-63672702.png" alt=""><br><br><span style="font-size:24px">По кнопке «Добавить»   </span><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299497790-252984792.png" alt=""><br><span style="font-size:24px">создаем ЭЛН. В открывшемся окне выбираем нашего пациента. Жмем «Выбрать». При переходе из АРМ «Врач поликлиники» данные пациента заполнятся автоматически из посещения.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299552425-496537469.png" alt=""><br><br><span style="font-size:24px">Далее: Ставим галочку «Электронный» и жмем</span> <br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299627461-644232822.png" alt=""><br><br>Присвоится электронный номер больничного листа<br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299676958-583792961.png" alt=""><br><br><span style="font-size:24px">Заполняем необходимые поля: Причина нетрудоспособности, диагноз, период, Врач.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299729275-561820596.png" alt=""><br><br><span style="font-size:24px">"Лупа" -поиск врача из списк, выбрали себя, "Сохранить"<br>- далее необходимо подписать больничный лист своей ЭЦП</span><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784299830085-520043567.png" alt=""><br><br><span style="font-size:24px">Если необходимо распечатать данные больничного листа пациенту –жмем кнопку «Печать». <br>После того, как подписали БЛ, необходимо нажать кнопку «Сохранить».<br>Отправка в СФР производится страховым столом.</span></div><h2>Взятие на диспансерный учет</h2><div class="section"><span style="font-size:24px">ВЗЯТИЕ ПАЦИЕНТА НА Д-УЧЁТ ПРОИСХОДИТ НА ЛЮБОМ ПОСЕЩЕНИИ (ПРОФ.ОСОМТРЕ, АМБ. ПРИЁМ И Т.Д.) <br><br><span style="color:#FAEBD7">ВАЖНО! Обращать внимание на шифр/полис (ОМС или БЮДЖЕТ), т.к. действуют два приказа: МЗ 168 от 2022 г. и КБ 754 от 2024 г.  Заполнен ли  «ТАЛОН» и вкладка  «Диспансерное наблюдение» (взят, /не взят на учет пациент)</span>. <br></span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784301917269-32961608.png" alt=""><br><br><span style="font-size:24px">1.	Открываем посещение.<br>Заполняете протокол осмотра, затем «ТАЛОН» (перед взятием на д-учет, ТАЛОН уже должен быть заполнен) (ДИАГНОЗ, ШИФР, ЦЕЛЬ).</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784301969165-751400507.png" alt=""><br><br><span style="font-size:24px">Для корректного ведения учета, необходимо обращать внимание на шифр и диагноз!<br>Не забываем, что мы работаем не только по 168 приказу. </span><br><br><span style="font-size:24px">2.	Затем, переходим во вкладку «Диспансерное наблюдение»:</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784302064170-305326763.png" alt=""><br><br><span style="font-size:24px">Жмём «ВЗЯТЬ НА УЧЕТ» - > в открывшемся окне, заполняем поле диагноз, кликаем два раза левой кнопкой мыши, затем запишутся данные из талона), выбираем группу учёта-> после жмём  «ДА».  </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784302174556-293166014.png" alt=""><br><br><span style="font-size:24px">3.	Эпикриз взятия на д-учёт добавляем в этой же вкладке (внизу) «Протокол» -добавить-да.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784302279338-286654746.png" alt=""><br></div><h2>Снятие пациента с диспансерного учета</h2><div class="section"><span style="font-size:24px">СНЯТИЕ ПАЦИЕНТА С Д-УЧЁТ ПРОИСХОДИТ НА ЛЮБОМ ПОСЕЩЕНИИ (ПРОФ.ОСОМТРЕ, АМБ. ПРИЁМ И Т.Д.) <br>1.	Снятие пациента с д-учёта на любом осмотре.<br>Заполнили протокол осмотра, талон, затем переходим во вкладку “Диспансерное наблюдение”</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784303356580-423964194.png" alt=""><br><br><span style="font-size:24px">•	Жмём “снять с учёта” – проставляем дату и причину.<br>•	Ниже переходим во вкладку “протокол”, добавляем эпикриз, заполняем данные, печатаем – сохраняем и печатаем.<br><br>2.	Снятие с д-учёта без визита пациента<br>Если причина снятия осуществляется без визита пациента, а это возможно в двух случаях:<br>•	Выбытие пациента из места обслуживания <br>•	Смерть пациента<br>В данных случаях создавать посещение не нужно, переходим во вкладку “Дисп. Наблюдение”, находим нужного пациента - выбираем его и ниже ищем свою отметку о взятии на учет   - выбираем и жмём кнопку “Снять с учета”   - указываем дату и причину. “ДА”</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784303425130-527938323.png" alt=""><br></div><h2>Ведение приема по цели диспансерное наблюдение</h2><div class="section"><span style="font-size:24px">1.	Открываем посещение по аналогии с амб. приёмом<br>2.	Добавляем нужные формы протоколов:<br>•	Протокол осмотра (Диспансерный прием….);<br>•	Форма 30/у; <br>•	Эпикриз не нужно, если вы добавили его по алгоритму из инструкции по взятию пациента на диспансерный учет;<br>ПРИМЕЧАНИЕ: Формы протоколов для диспансерного наблюдения находятся в папке подразделения: (Поликлиника ЦП, Поликлиника ф2 и тд.) – «Диспансеризация» (Диспансерный приём..) - форма 30 и эпикризы в «общих протоколах»!</span><br> <br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784555693898-770876540.png" alt=""><br><br><span style="font-size:24px">3.	Заполнение ф30.<br> Для того, чтобы ф30 корректно была заполнена: кликаем в первую строчку «Группа диспансерного наблюдения» - выбираем номер /название  в соответствии с вкладкой «Диспансерное наблюдение».</span><br> <br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784555773371-836228293.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784556789077-67299940.png" alt=""><br><br><span style="font-size:24px">	Выбрали группу, жмём «да», затем кликаем все кнопки «Посчитать».<br>	При следующих визитах пациента,  необходимо добавить данный протокол, нажать «копировать из истории», ищем последнюю заполненную и выбираем данные для копирования.<br>	Фиксируем даты посещения и по необходимости  добавляем мероприятия.</span><br><br><span style="font-size:24px">4.	Талон при диспансерном наблюдении.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784555938614-468895822.png" alt=""><br><br><span style="font-size:24px">Заполняем талон по аналогии с амб. приёмом, <br>•	Тип посещения: Разовое (диагнозы по приказу МЗ №168н) / по случаю (прочие);<br>•	Обязательно проставляем цель: Диспансерное наблюдение;<br><br>	ДАЛЬНЕЙШИЕ ПОСЕЩЕНИЯ ПАЦИЕНТА, С ИНОЙ ЦЕЛЬЮ - ДИСПАНСЕРНЫМ НАБЛЮДЕНИЕМ НЕ СЧИТАЮТСЯ! </span><br><br><span style="font-size:24px">5.	Открытие МЭСа<br> Варианты МЭСов:   <br>	днБСК; - БОЛЕЗНИ СИСТЕМЫ КРОВООБРАЩЕНИЯ<br>	днОНК; - ОНКОЛОГИЧЕСКИЕ ЗАБОЛЕВАНИЯ<br>	днДИАБ; - САХАРНЫЙ ДИАБЕТ У ВЗРОСЛЫХ <br>	ДиспНаб; -  ВСЕ ОСТАЛЬНОЕ, ЧТО НЕ ВХОДИТ В ГРУППЫ ВЫШЕ<br>Пример оформления: </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784556450879-241083006.png" alt=""><br><br><span style="font-size:24px">•	Приём: по ОМС;<br>•	Тип посещения: Разовое посещение;<br>•	Код МЭС в списке будет соответствовать диагнозу и вашей специальности.<br>МЭС разового посещения закрываем день в день - проставляем: дату, тип закрытия - «выполнен полностью»- жмём «Закрыть МЭС».</span><br><br><span style="font-size:24px"><span style="color:#FAEBD7">Вариант МЭСа: </span><br>а(Специальность)-ДН-р<br>Т. к. посещение по случаю, то на 1-ом посещении открываем МЭС, на 2-ом посещении закрываем МЭС– проставляем дату закрытия и тип закрытия «Выполнен полностью» - «Закрыть МЭС»</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784556554113-928429086.png" alt=""><br><br><span style="font-size:24px">ВАЖНО! Согласно тарифному соглашению в МЭС добавляется только прием врача.  Необходимые диагностические исследования и лаборатория добавляются в талоне.<br>При добавлении услуг «По врачу» появится список услуг, положенных при диспансерном наблюдении по соответствующим заболеваниям.<br>ВАЖНО!  У врача могут быть добавлены услуги по разным группам наблюдения. Обращайте внимание на начало кода услуги группы!<br>Начало наименования КОДа  УСЛУГИ	ДН по заболеванию:<br>днДиаб….	Из группы Сахарный диабет<br>днБСК….. 	Из группы  Болезни системы кровообращения<br>днОНК…. 	Из группы Онкологические заболевания<br>днП…….	   Из группы Прочие заболевания</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784556657028-174648999.png" alt=""><br></div><h2>Проверка пациентов, состоящих на диспансерном учете</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784561992412-407641689.png" alt=""><br><br><span style="font-size:24px">•	 Важно, при выборе статуса «состоит», необходимо выбрать период на фактическую дату.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784562050089-101991342.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784562119222-854110081.png" alt=""> <br><br><span style="font-size:24px">•	Для проверки, кто взят на учет или снят с учета, необходимо выбрать нужный период  , месяц, год, и тд..</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784562205459-305508561.png" alt=""><br></div><h2>Консультативный прием пациентов из стационара</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784646992686-246151676.png" alt=""><br><br>	Для проведения консультации пациента со стационара не нужно создавать посещение. Ведем пациента в рамках истории болезни через вкладку "Журнал" - Консультации внутр. <br><br>- Лечащий врач стационара должен создать внутреннее направление на специалиста амбулатории. <br>- При визите  пациента, врач амбулатории создает протокол осмотра во вкладке «Журнал», заполняем необходимые поля и сохраняем данные <br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647102271-356438193.png" alt=""><br><br></div><h2>Ведение проф.осмотра</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647213947-638935188.png" alt=""><br><br><span style="font-size:24px">1.	Проф. осмотр ведем во вкладке «Медосмотры», вводим номер карточки пациента, жмем- Enter. <br>2.	По умолчанию период установлен день в день. Для отображения медосмотра,  укажите дату начала медосмотра (либо дату: 01.01.2026).<br>3.	Для следующего осмотра /пациента – выделяем номер карты предыдущего и вводим новую карту. Enter.<br>4.	Далее в услугах медосмотра выбираем свою услугу, кликаем 2 раза, открывается  окно приема История/Протоколы.<br>ВАЖНО!<br>	Услуги самостоятельно не добавляем.<br>	Заранее не создаем талон визита пациента, он сгенерируется автоматически после того, как вы выберите в разделе «медосмотры» пациента и свою услугу осмотра.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647272274-677531521.png" alt=""><br><br><span style="font-size:24px">Заполняем данные по аналогии амбулаторного приема. (Протокол и Талон)</span></div><h2>Вкладка "МОНИТОР СЛУЧАЕВ"</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647376376-781135891.png" alt=""><br><br><span style="font-size:24px">Вкладка: «Монитор случаев» - отображает  посещения по случаю, (можно отследить/проконтролировать  не закрытые случаи).</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647442539-659571738.png" alt=""><br><br><span style="font-size:24px">Выставляем период и проверяем. </span></div><h2>Работа с отчетами в АРМ "КОНТЕНТ"</h2><div class="section"><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647522182-141851222.png" alt=""><br><span style="font-size:24px"><br>	Для работы с отчетами, необходимо войти в АРМ «Контент», пароль =АРМ «Врач поликлиники» <br>Слева выбираем отчет: открываем «+»</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647572006-387216441.png" alt=""><br><br><span style="font-size:24px">Задаем параметры поиска, после жмём «выбрать»</span></div><h2>Проведение ДВН1/ДВН2/УД/ДРЗ1/ДРЗ2</h2><div class="section"><span style="font-size:24px">ЕСЛИ ВЫ ВИДИТЕ, ЧТО ВРЕМЯ ПРИЕМА ПОДСВЕЧЕНО КРАСНЫМ ЦВЕТОМ - ВСЕ ВИДЫ ДИСП. НЕЛЬЗЯ!</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647681097-71172873.png" alt=""><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647712834-380134709.png" alt=""><br><br><span style="font-size:24px">ДЛЯ ПРОВЕДЕНИЯ ПРИЁМА ПО ДИСПАНСЕРИЗАЦИИ У ПАЦИЕНТА ОБЯЗАТЕЛЬНО ДОЛЖЕН БЫТЬ ПОЛИС ОМС И ДЛЯ ШИФРА 9.78.711 ПОЛИС ДОЛЖЕН БЫТЬ АКТИВНЫМ!</span><br><br><span style="font-size:24px"><span style="color:#FAEBD7">1. ТАЛОН</span>:</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647787428-790176716.png" alt=""><br><br><span style="font-size:24px">Цель посещения: ДВН1<br>Исход: (Осмотр)<br>Результат лечения: (направлен на обследования)</span><br><br><span style="font-size:24px"><span style="color:#FAEBD7">2.	Открытие МЭСА</span></span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647879527-857590728.png" alt=""><br><br><span style="font-size:24px">При диспансеризации взрослого населения, помимо протокола /талона (важно указать цель согласно проводимой диспансеризации), необходимо заполнить вкладку «МЭС». Подробный алгоритм см. в инструкции по ДВН/УД/ДРЗ..<br>Переходим во вкладку «МЭС», - жмём открыть МЭС – далее поле «код МЭС» -  в появившемся окне будет только один необходимый вам код.<br>Автоматически появятся услуги входящие в состав выбранного МЭСа с отметкой “оказана”. Поле «Статус» вы регулируете самостоятельно (оказано ранее, не предоставляется, оказана и тд. ). Удаление услуг из МЭС категорически запрещено, все строки должны быть выделены зеленым цветом! Если услуга не была оказана  - меняете только её статус.</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647925913-575074.png" alt=""><br><br><span style="font-size:24px">Для закрытия МЭС необходимо проставить «Дату закрытия» и «Тип закрытия», далее жмём "Закрыть МЭС"</span><br><br><span style="font-size:24px">Если требуется удалить МЭС, то выполняем следующее:</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1784647999836-338193006.png" alt=""><br><br><span style="font-size:24px">1)	Удаляем услуги входящие в МЭС по кнопке «Удалить все»;<br>2)	Удаляем сам МЭС – выше жмём «Удалить» ;<br>3)	Для открытия МЭС - жмём «Открыть»;</span><br></div>
-        </div>
+    <!-- Оглавление -->
+    <div class="toc" id="tocContainer">
+        <h3>📌 Содержание</h3>
+        <ul id="tocList"></ul>
     </div>
-	 <!-- Фиксированная нижняя панель -->
+
+    <div class="instruction-card">
+        <p style="color: #666; margin-bottom: 16px;">Инструкции для врачей и медицинских сестёр</p>
+        <!-- Здесь идёт весь ваш длинный контент (все <h2> и <div class="section">) -->
+        <!-- Оставляем без изменений -->
+        <h2>1. РАБОТА С НОВЫМИ ПРОТОКОЛАМИ ВК</h2>
+        <div class="section"><span style="font-size:24px">1.1.	Находятся в папке Общие – ВК_ЦП </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695137361-623716163.png" alt=""><br><br><span style="font-size:24px">1.2.	В каждом врачебном протоколе (первичный, повторный) создан раздел ВК: </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695181627-654077142.png" alt=""><br><br><span style="font-size:24px">1.3.	Выбираем нужное, заполняем все необходимо в протоколе, далее подписываем ЭЦП, далее автоматически будет добавлен протокол -  «Выписки из протокола подкомиссии по ЭВН».<br>Осмотр подписывает врачом, Выписка подписывается ЭП членами комиссии и председателем.<br>1.4.	Эпикриз ЭВН (прошедший период), далее Выписка из протокола Прошедший период<br>Эпикриз подписывается врачом, Выписка членами комиссии и председателем.<br>1.5.	Эпикриз на подкомиссию по ЭВН (Дубликат), далее Выписка из протокола подкомиссии по ЭВН (Дубликат)<br>Эпикриз подписывается врачом, Выписка членами комиссии и председателем.<br>1.6.	Выписка из протокола ЭВН МСЭ<br>•	 В каждом врачебном протоколе (первичный, повторный) создан раздел МСЭ</span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695232862-63986201.png" alt=""><br><br><span style="font-size:24px">Первая строчка для варианта когда мы направляем на ОБСЛЕДОВАНИЯ, необходимых для получения клинико-фукнциональных данных.<br>Вторая строчка – когда уже выполнены исследования и пациента направлен на подкомиссию по ЭВН для решения вопроса о направлении на МСЭ.<br>•	При формировании Выписки из протокола созданы варианты ЭВН МСЭ1 и ЭВН МСЭ2<br>ЭВН МСЭ 1 выбираем когда мы во врачебном протоколе выбрали первый вариант, т.е. для направления на обследования.<br>•	Если мы уже направляем для решения вопроса о направлении на МСЭ выбираем протокол «Выписка из протокола ЭВН МСЭ 2», где мы выбираем нужные значения.  <br>•	Строчку с точкой мы пользуемся только в случае когда основания для МСЭ НЕ ВЫЯВЛЕНЫ. </span><br><br><img src="https://RomanDavidov.github.io/max_chat_bot_sznkc/1783695281354-97221933.png" alt=""><br><br><span style="font-size:24px">1.7	. Контроль заведующего (Для ЭЛН)<br>Если в протоколе специалиста, заполнено поле Контроль заведующего.. заполняем все необходимо в протоколе, далее подписываем ЭЦП, далее автоматически будет добавлен протокол , автоматически будет добавлен протокол «Контроль заведующего (ЭВН)»<br>Осмотр подписывается врачом, Контроль заведующего подписывается -  ЭП  председателем и заместителем. <br></span></div>
+
+        <!-- ... остальные разделы ... -->
+        <!-- ВАЖНО: не удаляйте содержимое, просто скопируйте его из вашего файла -->
+    </div>
+
+    <!-- Фиксированная нижняя панель -->
     <div class="bottom-nav">
         <a href="index.html" class="btn-back">← Назад к списку</a>
         <button class="btn-close" id="closeApp">Закрыть</button>
@@ -240,21 +179,51 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Инициализация MAXBridge (если доступен)
-            if (window.MAXBridge && typeof window.MAXBridge.ready === 'function') {
-                window.MAXBridge.ready();
-                console.log('MAXBridge готов');
+            // ---- Строим оглавление ----
+            const card = document.querySelector('.instruction-card');
+            if (card) {
+                const headings = card.querySelectorAll('h2');
+                const tocList = document.getElementById('tocList');
+                if (tocList) {
+                    headings.forEach((h2, index) => {
+                        if (!h2.id) {
+                            const text = h2.textContent.trim();
+                            const id = 'section-' + index + '-' + text.replace(/\s+/g, '-').replace(/[^a-zA-Zа-яА-Я0-9-]/g, '');
+                            h2.id = id;
+                        }
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = '#' + h2.id;
+                        a.textContent = h2.textContent.trim() || 'Раздел ' + (index+1);
+                        li.appendChild(a);
+                        tocList.appendChild(li);
+                    });
+
+                    // Плавный скролл
+                    document.querySelectorAll('.toc a').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const targetId = this.getAttribute('href').substring(1);
+                            const target = document.getElementById(targetId);
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                }
             }
 
+            // ---- Закрытие мини-приложения ----
+            if (window.MAXBridge && typeof window.MAXBridge.ready === 'function') {
+                window.MAXBridge.ready();
+            }
             const closeBtn = document.getElementById('closeApp');
             if (closeBtn) {
                 closeBtn.addEventListener('click', function() {
-                    // 1. Пытаемся закрыть через MAXBridge
                     if (window.MAXBridge && typeof window.MAXBridge.close === 'function') {
                         window.MAXBridge.close();
                         return;
                     }
-                    // 2. Fallback: если мост не доступен, пробуем window.close()
                     if (typeof window.close === 'function') {
                         window.close();
                     } else {
@@ -266,4 +235,3 @@
     </script>
 </body>
 </html>
-  
